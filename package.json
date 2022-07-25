@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "uuid": "^8.3.2"
+  },
+  "name": "course3_homework",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "dev": "node ./lib/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MihaiPopa14/Course3_Homework.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MihaiPopa14/Course3_Homework/issues"
+  },
+  "homepage": "https://github.com/MihaiPopa14/Course3_Homework#readme"
+}
