@@ -9,7 +9,9 @@
   "directories": {
     "lib": "lib"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "ts-node": "^10.9.1"
+  },
   "scripts": {
     "dev": "node ./lib/index.js"
   },
