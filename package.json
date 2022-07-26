@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "inquirer": "^9.0.2",
     "uuid": "^8.3.2"
   },
   "name": "course3_homework",
@@ -10,10 +11,13 @@
     "lib": "lib"
   },
   "devDependencies": {
+    "@types/inquirer": "^8.2.1",
+    "@types/uuid": "^8.3.4",
+    "nodemon": "^2.0.19",
     "ts-node": "^10.9.1"
   },
   "scripts": {
-    "dev": "node ./lib/index.js"
+    "dev": "ts-node ./lib/index.js"
   },
   "repository": {
     "type": "git",
