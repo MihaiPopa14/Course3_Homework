@@ -1,7 +1,7 @@
 import {Grades, Student} from './class'
 import { addStudent, checkStudent, getStudentGrades, updateData } from './util';
-import { gradesList, studentList } from './array';
 
+import { gradesList } from './array';
 import inquirer from 'inquirer';
 
 function menu(): void{
@@ -19,13 +19,13 @@ function menu(): void{
         },
     ])
     .then(answers =>{
-        if(answers['menu'] === 1){
+        if(answers['menu'] === '1 - Add a new student'){
             insertStudent()
-        } else if (answers['menu'] === 2){
+        } else if (answers['menu'] === '2 - Check grades of a student'){
             checkGrades()
-        } else if (answers['menu'] === 3){
+        } else if (answers['menu'] === '3 - Grade a student'){
             addGrades()
-        } else if (answers['menu'] === 0) {
+        } else if (answers['menu'] === '0 - Exit') {
             return
         }
     })
@@ -150,16 +150,20 @@ function checkGrades(): void{
             if(gradesArray.length === 0 ){
                 console.log("This student does not have any grades")
                 return menu()
-            }
+            } else{
 
             let gradeData:string = '\n'
             for(const grade of gradesArray) {
-                const str:string = `Subject: ${grade.getSubject} Grade: ${grade.getGrade}`
+                const str:string = `Subject: ${grade.getSubject()} Grade: ${grade.getGrade()}`
                 gradeData += str;
                 gradeData += '\n'
+                 }
+               console.log(gradeData)  
             }
 
-            console.log(gradeData)
+
+
+            
             console.log()
             return menu()
 
@@ -167,3 +171,10 @@ function checkGrades(): void{
         }
     })
 }
+
+async function main() {
+    await updateData()
+    menu()
+}
+
+main()
