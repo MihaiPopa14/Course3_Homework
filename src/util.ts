@@ -46,8 +46,8 @@ async function addStudent(student:Student): Promise<void> {
 
 async function updateData() {
     try {
-        await writeGrades
-        await writeStudents
+        await writeGrades()
+        await writeStudents()
     } catch (error) {
         console.log("Error while updating data")
     }   
