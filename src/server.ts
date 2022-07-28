@@ -1,4 +1,7 @@
+import { gradePath, studentPath } from "./file";
+
 import express from "express";
+import fs from "fs"
 
 const PORT = 3000;
 const app = express()
@@ -26,7 +29,7 @@ const students: Array<myStudent> = [];
 const grades: Array<myGrade> = [];
 
 app.get('/students', function (req, res) {
-  res.send(students)
+  res.send(auxStudArray)
 })
 
 app.get('/grades', function(req, res){
@@ -50,10 +53,11 @@ app.post('/students', (req, res) => {
     }
     students.push(student)
     res.send(student)
+    writeStudents()
 })
 
 app.post('/grades', (req, res) => {
-    if (!req.body.name|| req.body.name.length < 3) {
+    if (!req.body.studentName || req.body.studentName.length < 3) {
         // 400 Bad request
         res.status(400).send('Name is required and and should be at least 3 characters long')
         return
@@ -68,12 +72,48 @@ app.post('/grades', (req, res) => {
     }
 
     const grade: myGrade = {
-        studentName: req.body.name,
+        studentName: req.body.studentName,
         subject: req.body.subject,
         grade: req.body.grade
     }
     grades.push(grade)
     res.send(grade)
+    writeGrades()
 })
 
-app.listen(PORT, () => console.log(`Listening on port: ${PORT}...`))
+ function writeStudents(): void {
+     fs.writeFile(studentPath, JSON.stringify(students), (err) =>{
+        if (err) {
+            console.error(err)
+            return
+        }
+    })
+   
+}
+
+ function writeGrades(): void{
+     fs.writeFile(gradePath, JSON.stringify(grades), (err) =>{
+        if (err) {
+            console.error(err)
+            return
+        }
+    })  
+}
+
+const auxStudArray:Array<myStudent> = []
+const auxGradeArray: Array<myGrade> = []
+
+function readStudents(): void {
+    try {
+        const data: Array<myStudent> =  JSON.parse(fs.readFileSync(studentPath, 'utf-8'))
+        for (let i = 0; i < data.length; i++) {
+        auxStudArray.push(data[i]);
+      }
+    } catch (error) {
+        console.log('error reading file: ',studentPath)
+    }
+      
+}
+
+
+app.listen(PORT, () => console.log(`Listening at http://localhost:${PORT}...`))
