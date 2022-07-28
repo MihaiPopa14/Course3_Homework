@@ -45,4 +45,4 @@ async function retrieveData(): Promise<void> {
 
 }
 
-export{writeStudents, writeGrades, retrieveData}
+export{writeStudents, writeGrades, retrieveData, studentPath, gradePath}
