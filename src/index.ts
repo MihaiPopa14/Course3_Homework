@@ -163,7 +163,7 @@ function checkGrades(): void{
 
 
 
-            
+
             console.log()
             return menu()
 

@@ -1,6 +1,3 @@
-import { main, menu } from ".";
-
-import { Student } from "./class";
 import express from "express";
 
 const PORT = 3000;
