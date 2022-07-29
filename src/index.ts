@@ -3,6 +3,7 @@ import { addStudent, checkStudent, getStudentGrades, updateData } from './util';
 
 import { gradesList } from './array';
 import inquirer from 'inquirer';
+import { retrieveData } from './file';
 
 function menu(): void{
     inquirer.prompt([
@@ -161,9 +162,6 @@ function checkGrades(): void{
                console.log(gradeData)  
             }
 
-
-
-
             console.log()
             return menu()
 
@@ -173,7 +171,8 @@ function checkGrades(): void{
 }
 
 async function main() {
-    await updateData()
+    // await updateData()
+    await retrieveData() 
     menu()
 }
 

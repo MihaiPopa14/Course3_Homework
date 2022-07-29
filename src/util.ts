@@ -5,7 +5,7 @@ import { retrieveData, writeGrades, writeStudents } from "./file";
 // check if the student already exists
     function checkStudent(name:string): Student | undefined{
         for(const Student of studentList){
-            if (Student.getName() === name) {
+            if (Student.getName() === name) { //Error getName() not a function
                 return Student
             }
         }
@@ -35,6 +35,7 @@ function getStudentGrades(name:string): Array<Grades>{
     return grades;
 }
 
+
 //add students 
 
 async function addStudent(student:Student): Promise<void> {
@@ -52,5 +53,6 @@ async function updateData() {
         console.log("Error while updating data")
     }   
 }
+
 
 export{checkStudent, getStudentGrades, addStudent, updateData}
