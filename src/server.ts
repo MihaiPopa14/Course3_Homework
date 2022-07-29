@@ -29,11 +29,13 @@ const students: Array<myStudent> = [];
 const grades: Array<myGrade> = [];
 
 app.get('/students', function (req, res) {
-  res.send(auxStudArray)
+    readStudents()
+    res.send(auxStudArray)
 })
 
 app.get('/grades', function(req, res){
-    res.send(grades)
+    readGrades()
+    res.send(auxGradeArray)
 }) 
 
 app.post('/students', (req, res) => {
@@ -111,6 +113,18 @@ function readStudents(): void {
       }
     } catch (error) {
         console.log('error reading file: ',studentPath)
+    }
+      
+}
+
+function readGrades(): void {
+    try {
+        const data: Array<myGrade> =  JSON.parse(fs.readFileSync(gradePath, 'utf-8'))
+        for (let i = 0; i < data.length; i++) {
+        auxGradeArray.push(data[i]);
+      }
+    } catch (error) {
+        console.log('error reading file: ',gradePath)
     }
       
 }
