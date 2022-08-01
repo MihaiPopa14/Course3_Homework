@@ -4,12 +4,14 @@ import { retrieveData, writeGrades, writeStudents } from "./file";
 
 // check if the student already exists
     function checkStudent(name:string): Student | undefined{
-        for(const Student of studentList){
-            if (Student.getName() === name) { //Error getName() not a function
-                return Student
+       // const st: Student | undefined= studentList.find(student=> student.getName() === name)
+       //  return st;
+        for(const st of studentList){
+            if (st.getName() === name) { //Error getName() not a function
+                return st;
             }
+            console.log(st);
         }
-
         return undefined
     }
 

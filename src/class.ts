@@ -6,18 +6,23 @@ class Student{
     private name:string;
     private classNbr:number;
 
-    constructor(name:string,classNbr:number){
-        this.id = uuid();
+    constructor(name:string, classNbr:number, id?:string){
+        this.id = id || uuid();
         this.name = name;
         this.classNbr = classNbr;
     }
+    
 
-    getName():string{
+    public getName():string{
         return this.name;
     }
 
-    getId():string{
+    public getId():string{
         return this.id;
+    }
+
+    public getClassNbr():number{
+        return this.classNbr;
     }
 }
 

@@ -22,11 +22,17 @@ async function writeGrades(): Promise<void>{
     }
 }
 
+type JsonStudent = {
+     id:string;
+     name:string;
+    classNbr:number;
+}
+
 async function retrieveData(): Promise<void> {
     try {
-        let data: Array<Student> = JSON.parse(fs.readFileSync(studentPath, 'utf-8'))
+        let data: Array<JsonStudent> = JSON.parse(fs.readFileSync(studentPath, 'utf-8'))
         for (let i = 0; i < data.length; i++) {
-            studentList.push(data[i]);
+            studentList.push(new Student(data[i].name, data[i].classNbr, data[i].id));
         }
     } catch (error) {
         console.log("Error while reading file:", studentPath)
