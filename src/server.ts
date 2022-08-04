@@ -1,11 +1,13 @@
 import { gradePath, studentPath } from "./file";
 
+import cors from "cors";
 import express from "express";
 import fs from "fs";
 import { v4 as uuid } from "uuid";
 
-const PORT = 3000;
+const PORT = 5000;
 const app = express();
+app.use(cors());
 
 // const schema = {
 //     name: Joi.string().min(3).required(),
